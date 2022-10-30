@@ -6,5 +6,8 @@ html, body {
     background-repeat: no-repeat;
     color: #fff;
     font-family: 'Montserrat';
-    text-shadow: 3px 3px #000;
+}
+
+h2 {
+    text-shadow: 3px 3px 5px #000;
 }
