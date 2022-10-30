@@ -4,17 +4,19 @@
         <meta charset="UTF-8">
         <link rel="stylesheet" href="style.css">
         <link href='https://fonts.googleapis.com/css?family=Montserrat' rel='stylesheet'>
+        <script type="text/javascript" src="./scripts/script.js"></script>
         <style></style>
     </head>
 
     <body>
         <h2>To Do List</h2>
-        <form action="" method="post"></form>
-        <input type="text" placeholder="New task...">
-        <button type="submit">ADD</button>
+        <form id="form" action="" method="post">
+            <input id="task-text" type="text" placeholder="New Task..." autocomplete="off">
+            <button type="submit">ADD</button>
+        </form>
 
         <div class="taskboard">
-            <ul>
+            <ul id="to-do-list">
                 <li class="taskin"><input type="checkbox">
                     <label>Task 1</label>
                 </li>

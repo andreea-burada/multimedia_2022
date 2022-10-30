@@ -8,7 +8,7 @@
             "type": "chrome",
             "request": "launch",
             "name": "open website",
-            "file": "e:\\Code Projects\\GitHubRepos\\multimedia_2022\\seminar_05\\to-do-list.html",
+            "file": "${workspaceFolder}/to-do-list.html",
             "url": "http://localhost:5500"
         }
     ]
