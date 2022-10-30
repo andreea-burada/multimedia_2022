@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="eng">
+    <head>
+        <meta charset="UTF-8">
+        <style>
+            ul{
+                float: right;
+            }
+
+            li{
+                color: green;
+            }
+
+            ul > li{
+                color:red;
+            }
+        </style>
+    </head>
+    <body>
+        <h1>
+            Using DOM.
+        </h1>
+        <!--pseudo selectors with blue-->
+        <!--align on the right side-->
+        <ul>
+            <li>First element</li>
+            <li>Second element</li>
+            <li>Third element</li>
+        </ul>
+        <!--align on the left part-->
+        <!--red items in the list-->
+        <!--we change the color only this list-->
+        <ol>
+            <li>First element</li>
+            <li>Second element</li>
+            <li>Third element</li>
+        </ol>
+        <div>
+            This web page is loading and we can use it to control similar text
+        </div>
+        <!--get one image randomly from unsplash.com (320x450) when we press the button-->
+         <button id="btn">
+            Display the image
+        </button>
+
+        <script>
+            let button=document.getElementById("btn").addEventListener("click", addImage);
+            function addImage(){
+                let accessDiv = document.querySelector("div");
+                accessDiv.innerHTML = "This is the image";
+                accessDiv.style.color="blue";
+                accessDiv.style.height="480px";
+                accessDiv.style.width="320px";
+                let x=Math.random();
+                accessDiv.style.backgroundImage="url(https://source.unsplash.com/320x480/?random=" + x + ")";
+            }
+        </script>
+    </body>
+</html>
