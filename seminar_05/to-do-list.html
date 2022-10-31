@@ -4,23 +4,25 @@
         <meta charset="UTF-8">
         <link rel="stylesheet" href="style.css">
         <link href='https://fonts.googleapis.com/css?family=Montserrat' rel='stylesheet'>
-        <script type="text/javascript" src="./scripts/script.js"></script>
         <style></style>
     </head>
 
     <body>
         <h2>To Do List</h2>
         <form id="form" action="" method="post">
-            <input id="task-text" type="text" placeholder="New Task..." autocomplete="off">
-            <button type="submit">ADD</button>
+            <!-- Task Creation Input -->
+            <input id="task-text" type="text" placeholder="New Task..." autocomplete="off" />
+            <button id ="form-button" type="submit">ADD</button>
+            
+            <!-- Task Board -->
+            <div class="taskboard">
+                <ul id="to-do-list">
+                    <li class="taskin">
+                        <input class="taskin-checkbox" type="checkbox"><label> Example Task. NOT Working.</label>
+                    </li>
+                </ul>
+            </div>
         </form>
-
-        <div class="taskboard">
-            <ul id="to-do-list">
-                <li class="taskin"><input type="checkbox">
-                    <label>Task 1</label>
-                </li>
-            </ul>
-        </div>
+        <script type="text/javascript" src="./scripts/script.js"></script>
     </body>
 </html>

@@ -11,3 +11,15 @@ html, body {
 h2 {
     text-shadow: 3px 3px 5px #000;
 }
+
+ul {
+    list-style-type: square;
+}
+
+span:hover {
+    cursor:pointer;
+}
+
+label.checked {
+    text-decoration: line-through;
+}
