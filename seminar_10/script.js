@@ -3,50 +3,59 @@ function loadImage() {
     var context = canvas.getContext("2d");
     var width = canvas.width;
     var height = canvas.height;
+
     var image = new Image(width, height);
     image.src = "./Penguins.jpg";
-    //image.crossOrigin = "Anonymous";
 
-    var mX = 0;
-    var mY = 0;
+    var mX = null;
+    var mY = null;
 
     image.onload = function() {
-        window.addEventListener("mousemove", (event) => {
-            mX = event.clientX;
-            mY = event.clientY;
-        });
-        drawImage(image, context, height, width, mX, mY);
+        window.addEventListener("mousemove", mousemove);
+        drawImage(image);
     };
     
-
-}
-
-function drawImage(image, context, height, width, mX, mY) {
-    context.drawImage(image, 0, 0);
-    var imageData = context.getImageData(0, 0, width, height);
-    var pixels = imageData.data;
-    for(let i = 0; i < height; i++)
-        for(let j = 0; j < width; j++)
-        {
-            var pixel1 = pixels[(i+j)*4];
-            var pixel2 = pixels[(i+j)*4 + 1];
-            var pixel3 = pixels[(i+j)*4 + 2];
-            var pixel4 = pixels[(i+j)*4 + 3];
-            var distance = Math.sqrt((i - mY)*(i - mY) + (j - mX)*(j - mX));
-            if (distance > 100)
-            {
-                var avg = (pixel1 + pixel2 + pixel3) / 3;
-                pixel1 = avg;
-                pixel2 = avg;
-                pixel3 = avg;
-            }
-            else
-            {
-                pixel4 = pixel4 + 100;
-            }
+    function drawImage(image) {
+        var noise = 100;
+        var radius = 75;
+        context.drawImage(image, 0, 0);
+        var imageData = context.getImageData(0, 0, width, height);
+        var pixels = imageData.data;
+    
+        let notOnImage = false;
+        if ((mX === null || mY === null) || (mX > width || mY > height)) {
+            notOnImage = true;
         }
-    context.putImageData(imageData, 0, 0);
+    
+        for(let i = 0; i < height; i++)
+            for(let j = 0; j < width; j++)
+            {
+                var pos = (i * width + j) * 4;
+                var distance = Math.sqrt((i - mY) * (i - mY) + (j - mX) * (j - mX));
+                
+                if (notOnImage == true || distance > radius)
+                {
+                    var avg = (pixels[pos] + pixels[pos + 1] + pixels[pos + 2]) / 3;
+                    pixels[pos] = avg;
+                    pixels[pos + 1] = avg;
+                    pixels[pos + 2] = avg;
+                }
+                else
+                {
+                    pixels[pos + 3] *= Math.random() * noise;
+                }
+            }
+        context.putImageData(imageData, 0, 0);
+    };
+
+    const mousemove = function (event) {
+        mX = event.offsetX;
+        mY = event.offsetY;
+        drawImage(image);
+    };
 }
+
+
 
 
 
